@@ -2,7 +2,7 @@
 (1)LHS查询，即查找容器本身,例如var a=2;<br>
 (2)RHS查询，即查找容器的值,例如console.log(a)<br>
 区分LHS和RHS的意义：
-（1）LHS查询会在所在作用域创建变量a,并提升变量名和整个函数;
+（1）LHS查询会在所在作用域创建变量a，并提升变量名;
 ```
 function a(){
   console.log(test)//undefined
