@@ -37,7 +37,7 @@ console.log(o2.a);//undefined
 console.log(a);//2 
 ```
 上例中通过foo中with来修改对象o1、o2，o1修改后一切正常，而o2因为本身没有a方法，所以with将a方法赋值给了全局window;<br>
-(a) o2.a 返回的是undefined，说明with在定义a的时候对其进行了LHS的使用，所以创建了a变量，但是没有赋值;<br>
+(a) o2.a 返回的是undefined，说明with在定义a的时候对其进行了LHS的查询，所以创建了a变量，但是没有赋值;<br>
 (b) a返回2是因为with修改时生效的是其所在的词法作用域，即foo，foo中返回的this是window，所以给了全局;<br>
 
 
