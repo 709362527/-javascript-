@@ -2,7 +2,7 @@
 * 即是在写代码时将变量和块作用域写在哪里决定的作用域;
 
 欺骗词法作用域的方法:<br>
-（1）eval
+(1)eval
 ```
 function foo(str，a){
   eval(str);
