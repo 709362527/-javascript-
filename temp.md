@@ -12,9 +12,36 @@ function foo(str,a){
 var b=2;
 foo("var b=3;",1);//1,3
 ```
-上面例子中var b=3是定义在foo作用域外部的变量,通过eval做到的,这样做很可能造成错误判断,以为没有内部没有声明变量,实际上却有,造成更多不确定性;
+上面例子中var b=3是定义在foo作用域外部的变量,通过eval做到私有变量外部定义,这样做很可能造成错误判断,以为没有内部没有声明变量,实际上却有,造成更多不确定性;
 
 (2)with
+```
+function foo(obj){
+  with(obj){
+    a=2;
+  }
+}
+
+var o1={
+  a:3
+}
+
+var o2={
+  b:3
+}
+foo(o1);
+console.log(o1.a);//2
+
+foo(o2);
+console.log(o2.a);//undefined
+console.log(a);//2 
+```
+上例中通过foo中with来修改对象o1、o2,o1修改后一切正常，而o2因为本身没有a方法,所以with将a方法赋值给了全局window;<br>
+(a) o2.a 返回的是undefined,说明with在定义a的时候对其进行了LHS的使用,所以创建了a变量,但是没有赋值;<br>
+(b) a返回2是因为with修改时生效的是其所在的词法作用域,即foo,foo中返回的this是window,所以给了全局;<br>
+
+
+
 
 ##  二、块级作用域
 ES6以后，javascript引入了let，终于有了创建完整的、不受约束的块作用域的方法；
