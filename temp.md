@@ -1,4 +1,21 @@
-## 一、块级作用域
+## 一、词法作用域
+* 即是在写代码时将变量和块作用域写在哪里决定的作用域;
+
+欺骗词法作用域的方法:
+（1）eval
+```
+function foo(str,a){
+  eval(str);
+  console.log(a,b)
+}
+
+var b=2;
+foo("var b=3;",1);//1,3
+```
+上面例子中var b=3是定义在foo作用域外部的变量,通过eval做到的,这样做很可能造成错误判断,以为没有内部没有声明变量,实际上却有,造成更多不确定性;
+
+<br>
+## 二、块级作用域
 ES6以后，javascript引入了let，终于有了创建完整的、不受约束的块作用域的方法；
 * ES6以前，javascript只有部分写法具有块级作用域的功能：<br>
 (1)with<br>
@@ -16,7 +33,7 @@ ES6以后，javascript引入了let，终于有了创建完整的、不受约束�
 可以看到示例中变量a并没有暴露到全局，外部也没有函数作用域，是catch的块级作用域起了作用；
 * 不过值得注意的是try catch性能很糟糕
  
-## 二、this
+## 三、this
 
 ```
 var obj={
@@ -30,4 +47,6 @@ var id='not awesome';
 obj.cool();//awesome
 setTimeout(obj.cool,100);//not awesome
 ```
-上例中cool函数丢失了this的绑定
+上例中cool函数丢失了this的绑定<br>
+* 解决this指向问题的方法：
+(1)
