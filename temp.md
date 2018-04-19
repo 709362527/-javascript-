@@ -1,4 +1,21 @@
-## 一、词法作用域
+## 一、javascript编译
+(1)LHS查询，即查找容器本身,例如var a=2;<br>
+(2)RHS查询，即查找容器的值,例如console.log(a)<br>
+区分LHS和RHS的意义：
+（1）LHS查询会在所在作用域创建变量a,并提升变量名和整个函数;
+```
+function a(){
+  console.log(test)//undefined
+  console.log(test02)//Uncaught ReferenceError: test02 is not defined
+  var test="test";
+}
+a();
+```
+上例中var test="test"，进行了LHS查询，会先判断test变量是否存在，如果不存在，则创建test，并且把变量名提升至整个作用域顶部；<br>
+所以，test的变量名提升后 返回undefined，而test02则完全找不到直接报错；
+
+
+## 二、词法作用域
 * 即是在写代码时将变量和块作用域写在哪里决定的作用域;
 
 欺骗词法作用域的方法:<br>
@@ -41,7 +58,7 @@ console.log(a);//2
 (b) a返回2是因为with修改时生效的是其所在的词法作用域，即foo，foo中返回的this是window，所以给了全局;<br>
 
 
-## 二、函数作用域
+## 三、函数作用域
 函数作用域，就是避免内部的词法暴露到作用域外，阻止内部变量和函数被外部直接访问;<br>
 函数作用域的效果经常被用作命名空间,就好像就jquery一样，防止内部方法污染全局，不过有时候函数名本身就是一种污染，那么可以使用匿名函数,最外层的函数需要立即执行，即立即执行函数IIFE<br>
 ```
@@ -51,7 +68,7 @@ console.log(a);//2
 ```
 匿名自执行函数
 
-##  三、块级作用域
+##  四、块级作用域
 ES6以后，javascript引入了let，终于有了创建完整的、不受约束的块作用域的方法；
 * ES6以前，javascript只有部分写法具有块级作用域的功能：<br>
 (1)with<br>
@@ -69,7 +86,7 @@ ES6以后，javascript引入了let，终于有了创建完整的、不受约束�
 可以看到示例中变量a并没有暴露到全局，外部也没有函数作用域，是catch的块级作用域起了作用；
 * 不过值得注意的是try catch性能很糟糕
  
-## 三、this
+## 五、this
 
 ```
 var obj={
