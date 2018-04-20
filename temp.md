@@ -105,7 +105,17 @@ ES6以后，javascript引入了let，终于有了创建完整的、不受约束�
 * 不过值得注意的是try catch性能很糟糕
  
 ## 五、this
+* 函数内部的this指向于全局window
+```
+function foo(){
+  "use strict"
+  console.log(this)//undefined
+}
 
+foo()
+```
+上例中使用了严格模式，所以函数中this返回了undefined
+<br>
 ```
 var obj={
   id:'awesome'，
