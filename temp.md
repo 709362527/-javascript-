@@ -116,6 +116,24 @@ foo()
 ```
 上例中使用了严格模式，所以函数中this返回了undefined
 <br>
+* 对象属性引用链中中只有最顶层或者说只有最后一层会影响调用位置
+```
+function foo(){
+  console.log(this.a);
+}
+
+var obj2={
+  a:42,
+  foo:foo
+}
+var obj1={
+  a:2,
+  obj2:obj2
+}
+obj1.obj2.foo() //42
+```
+上例中函数this返回的是obj2，最贴近引用他的那一层；
+<br>
 ```
 var obj={
   id:'awesome'，
