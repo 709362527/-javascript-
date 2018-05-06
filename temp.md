@@ -156,6 +156,27 @@ obj1.obj2.foo() //42
 
 * 显示绑定的优先级要高于隐式绑定<br>
 * 箭头函数=>绑定的this不能修改
+* ES6之前实现箭头函数的方法（被绑定的this再次修改仍然是只想obj）：
+```
+function foo(){
+  var self=this;
+  return function(){
+    setTimeout(function(){
+      console.log(self.a)
+    },100)
+  }
+}
+
+var obj={
+  a:2
+}
+var obj02={
+  a:3
+}
+var bar=foo.call(obj)
+bar.call(obj02)//2
+```
+
 ```
 var obj={
   id:'awesome'，
