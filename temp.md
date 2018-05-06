@@ -192,3 +192,6 @@ setTimeout(obj.cool，100);//not awesome
 上例中cool函数丢失了this的绑定<br>
 * 解决this指向问题的方法：
 (1)
+## 六、对象
+#### 1、浅复制:Object.assign
+
