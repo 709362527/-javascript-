@@ -107,6 +107,24 @@ ES6以后，javascript引入了let，终于有了创建完整的、不受约束�
 ## 五、this
 * this在任何情况下都不指向函数的词法作用域，完全取决于函数的调用位置
 * 函数内部的this指向于全局window
+
+### this绑定方式
+#### 1、默认方式
+#### 2、隐式绑定
+```
+function foo(){
+  console.log(this.a);
+}
+
+var obj={
+  a:2,
+  foo:foo
+}
+obj.foo();
+```
+###### 隐式丢失，即多层obj调用function，this会指向离他最近的object；
+##### 3、显式绑定，call 、apply、bind
+##### 4、new绑定
 ```
 function foo(){
   "use strict"
