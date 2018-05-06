@@ -159,7 +159,7 @@ obj1.obj2.foo() //42
 (2)显式绑定(call、apply、bind、new)<br>
 显示绑定的优先级要高于隐式绑定<br>
 <br>
-箭头函数=>绑定的this不能修改<br>
+箭头函数=>绑定的this不能修改
 ```
 var obj={
   id:'awesome'，
