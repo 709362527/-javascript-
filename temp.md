@@ -152,14 +152,10 @@ var obj1={
 }
 obj1.obj2.foo() //42
 ```
-上例中函数this返回的是obj2，最贴近引用他的那一层；
+上例中函数this返回的是obj2，最贴近引用他的那一层；<br>
 
-* this的绑定方式
-(1)隐式绑定(将function赋值给对象)<br>
-(2)显式绑定(call、apply、bind、new)<br>
-显示绑定的优先级要高于隐式绑定<br>
-<br>
-箭头函数=>绑定的this不能修改
+* 显示绑定的优先级要高于隐式绑定<br>
+* 箭头函数=>绑定的this不能修改
 ```
 var obj={
   id:'awesome'，
