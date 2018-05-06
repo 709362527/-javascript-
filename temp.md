@@ -122,9 +122,9 @@ var obj={
 }
 obj.foo();
 ```
-###### 隐式丢失，即多层obj调用function，this会指向离他最近的object；
-##### 3、显式绑定，call 、apply、bind
-##### 4、new绑定
+##### 隐式丢失，即多层obj调用function，this会指向离他最近的object；
+#### 3、显式绑定，call 、apply、bind
+#### 4、new绑定
 如果把null、undefined通过显示绑定的方式绑定，实际上会使用默认绑定规则;
 ```
 function foo(){
