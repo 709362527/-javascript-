@@ -2,13 +2,13 @@
 ## 一、接口返回数据的基本格式
 ```
 {
-  status:true,//非必，返回接口请求的状态
   code: 200,  //必须
   data: {   //必须
     id: 1,
     name: "XXX",
     codeId: "XXX" //注意：所有的命名都是以驼峰命名法
   },
+  status:true,//非必，返回接口请求的状态
   message:"success!"  //非必
 }
 ```
