@@ -1,5 +1,6 @@
 # 前后端接口基本规范<br>
 ## 一、接口返回数据的基本格式
+
 ```
 {
   code: 200,  //必须
@@ -12,17 +13,19 @@
   message:"success!"  //非必
 }
 ```
-    #### 1、code(Number),返回当前接口的请求处理状态
-    ```
-    200: 请求处理成功
-    500: 请求处理失败
-    401: 请求未认证，跳转登录页
-    406: 请求未授权，跳转未授权提示页
-    ```
-    #### 2、data(Json),返回当前接口的数据信息，如果code不为200，则返回空数组null<br>
-    #### 3、status([Boolean]),返回当前接口请求的状态，成功或失败<br>
-    #### 4、message([String]),返回当前接口的消息文字<br>
+#### 1、code(Number),返回当前接口的请求处理状态
+```
+200: 请求处理成功
+500: 请求处理失败
+401: 请求未认证，跳转登录页
+406: 请求未授权，跳转未授权提示页
+```
+#### 2、data(Json),返回当前接口的数据信息，如果code不为200，则返回空数组null<br>
+#### 3、status([Boolean]),返回当前接口请求的状态，成功或失败<br>
+#### 4、message([String]),返回当前接口的消息文字<br>
+
 ## 二、HTTP请求方式
+
 ```
 常用的HTTP动词有下面四个（括号里是对应的SQL命令）。
 GET（SELECT）：从服务器取出资源（一项或多项）。
@@ -30,23 +33,25 @@ POST（CREATE）：在服务器新建一个资源。
 PUT（UPDATE）：在服务器更新资源（客户端提供改变后的完整资源）。
 DELETE（DELETE）：从服务器删除资源。
 ```
+
 ## 三、key值规范<br>
+
 #### 1、完全通用的key值
 ````
 （1）分页
-recordCount: 当前页记录数
-totalCount: 总记录数
-pageNo: 当前页码
-pageSize: 每页大小
-totalPage: 总页数
+    recordCount: 当前页记录数
+    totalCount: 总记录数
+    pageNo: 当前页码
+    pageSize: 每页大小
+    totalPage: 总页数
 （2）时间条件
-currentDate：当前时间
-startDate:开始时间
-endDate：结束时间
-（3）过滤条件
-sortby：排序列名
-orderBy：排序规则（asc、desc）
-producy_type：筛选条件
+    currentDate：当前时间
+    startDate:开始时间
+    endDate：结束时间
+    （3）过滤条件
+    sortby：排序列名
+    orderBy：排序规则（asc、desc）
+    producy_type：筛选条件
 ````
 #### 2、公司内部通用的key值
 ````
