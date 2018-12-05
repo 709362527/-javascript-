@@ -22,7 +22,7 @@
 #### 2、data(Json),返回当前接口的数据信息，如果code不为200，则返回空数组null<br>
 #### 3、status([Boolean]),返回当前接口请求的状态，成功或失败<br>
 #### 4、message([String]),返回当前接口的消息文字<br>
-##二、HTTP请求方式
+## 二、HTTP请求方式
 ```
 常用的HTTP动词有下面四个（括号里是对应的SQL命令）。
 GET（SELECT）：从服务器取出资源（一项或多项）。
@@ -51,21 +51,21 @@ producy_type：筛选条件
 #### 2、公司内部通用的key值
 ````
 （1）系统信息和身份信息
-ztOpenId：中天的openId
-openId:本系统的openId
-appId：系统的appId
-userName：真实姓名
-nickName：系统昵称
-userId：本系统的用户ID
-deptName：部门名称
+    ztOpenId：中天的openId
+    openId:本系统的openId
+    appId：系统的appId
+    userName：真实姓名
+    nickName：系统昵称
+    userId：本系统的用户ID
+    deptName：部门名称
 （2）数据信息
-province：省（可以套用的关键词，例如provinceId代表省Id、provinceName代表省中文名，下面以此类推）
-managementArea：管理区/省区
-city：市
-district：区县
-center：中心
-site：网点
-staff:员工
+    province：省（可以套用的关键词，例如provinceId代表省Id、provinceName代表省中文名，下面以此类推）
+    managementArea：管理区/省区
+    city：市
+    district：区县
+    center：中心
+    site：网点
+    staff:员工
 ````
 ## 四、value值规范
 1、非必填参数，无需传任何值包括key值，例如www.baidu.com?openId=  或者www.baidu.com?openId=null，都是完全没有必要的<br>
@@ -76,4 +76,4 @@ staff:员工
 中文传参<br>
 重复没必要的参数<br>
 ```
-
+## 时间仓促，会持续更新，欢迎指正和补充，感谢~~~
