@@ -73,12 +73,13 @@ DELETE（DELETE）：从服务器删除资源。
     staff:员工
 ````
 ## 四、value值规范
-1、非必填参数，无需传任何值包括key值，例如www.baidu.com?openId=  或者www.baidu.com?openId=null，都是完全没有必要的<br>
-2、必填参数<br>
-(1)空值""<br>
-(2)逻辑值Boolean，1或0<br>
-(3)禁止性规范：<br>
-中文传参<br>
-重复没必要的参数<br>
+````
+    1、非必填参数，无需传任何值包括key值，例如www.baidu.com?openId=  或者www.baidu.com?openId=null，都是完全没有必要的<br>
+    2、必填参数<br>
+    (1)空值""<br>
+    (2)逻辑值Boolean，1或0<br>
+    (3)禁止性规范：<br>
+    中文传参<br>
+    重复没必要的参数<br>
 ```
 ## 时间仓促，会持续更新，欢迎指正和补充，感谢~~~
