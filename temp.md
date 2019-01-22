@@ -216,28 +216,85 @@ arrCopy[0] = 'test'
 console.log(arr); // ["a", "b", "c"]
 console.log(arrCopy); // ["test", "b", "c"]
 ```
-##### 4、递归赋值
+##### 4、递归赋值，for...in 或 reflect1
+(1)for...in
 ```
-function deepClone(obj){
-  let objClone = Array.isArray(obj)?[]:{};
-  if(obj && typeof obj==="object"){
-      for(key in obj){
-          if(obj.hasOwnProperty(key)){
-              //判断ojb子元素是否为对象，如果是，递归复制
-              if(obj[key]&&typeof obj[key] ==="object"){
-                  objClone[key] = deepClone(obj[key]);
-              }else{
-                  //如果不是，简单复制
-                  objClone[key] = obj[key];
-              }
-          }
-      }
-  }
-  return objClone;
-}    
-let a=[1,2,3,4],
-    b=deepClone(a);
-a[0]=2;
-console.log(a,b);
+function isObject(o) {
+    return (typeof o === 'object' || typeof o === 'function') && o !== null
+}
+// 迭代递归法：深拷贝对象与数组
+function deepClone(obj) {
+    if (!isObject(obj)) {
+        throw new Error('obj 不是一个对象！')
+    }
+ 
+    let isArray = Array.isArray(obj)
+    let cloneObj = isArray ? [] : {}
+    for (let key in obj) {
+        cloneObj[key] = isObject(obj[key]) ? deepClone(obj[key]) : obj[key]
+    }
+ 
+    return cloneObj
+}
 ```
-
+(2)reflect
+```
+function deepClone(obj) {
+    if (!isObject(obj)) {
+        throw new Error('obj 不是一个对象！')
+    }
+ 
+    let isArray = Array.isArray(obj)
+    let cloneObj = isArray ? [...obj] : { ...obj }
+    Reflect.ownKeys(cloneObj).forEach(key => {
+        cloneObj[key] = isObject(obj[key]) ? deepClone(obj[key]) : obj[key]
+    })
+ 
+    return cloneObj
+}
+```
+### 递归赋值注意问题：
+(1) 对象成环怎么办？
+```
+test.loopObj = test
+```
+解决方法：如果有环对象，就会从栈里检测到，从而直接返回结果<br>
+(2) 键值不是字符串而是 Symbol，因为 Symbol 是一种特殊的数据类型，它最大的特点便是独一无二，所以它的深拷贝就是浅拷贝
+解决方法：1、使用reflect；2、Object.getOwnPropertySymbols(obj)，然后遍历
+(3) 拷贝原型上的属性
+ 解决方法：只有for...in可以实现，而其它三种方法(Object.keys、Reflect.ownKeys 和 JSON 方法)都不会追踪原型链上的属性；
+(4) 需要拷贝不可枚举的属性
+```
+function cloneDeep(obj) {
+    let family = {}
+    let parent = Object.getPrototypeOf(obj)
+ 
+    while (parent != null) {
+        family = completeAssign(deepClone(family), parent)
+        parent = Object.getPrototypeOf(parent)
+    }
+ 
+    // 下面这个函数会拷贝所有自有属性的属性描述符,来自于 MDN
+    // https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
+    function completeAssign(target, ...sources) {
+        sources.forEach(source => {
+            let descriptors = Object.keys(source).reduce((descriptors, key) => {
+                descriptors[key] = Object.getOwnPropertyDescriptor(source, key)
+                return descriptors
+            }, {})
+ 
+            // Object.assign 默认也会拷贝可枚举的Symbols
+            Object.getOwnPropertySymbols(source).forEach(sym => {
+                let descriptor = Object.getOwnPropertyDescriptor(source, sym)
+                if (descriptor.enumerable) {
+                    descriptors[sym] = descriptor
+                }
+            })
+            Object.defineProperties(target, descriptors)
+        })
+        return target
+    }
+ 
+    return completeAssign(deepClone(obj), family)
+}
+```
