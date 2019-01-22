@@ -196,6 +196,25 @@ setTimeout(obj.cool，100);//not awesome
 * 解决this指向问题的方法：
 (1)
 ## 六、对象
-#### 1、浅复制:Object.assign
-#### 2、深赋值:JSON.stringify()、JSON.parse()
+#### 一、浅复制:
+##### 1、Object.assign
+##### 2、遍历赋值
+#### 二、深赋值:
+##### 1、JSON.stringify()、JSON.parse()
+##### 2、slice
+```
+var arr = ['a', 'b', 'c'];
+var arrCopy = arr.slice(0);
+arrCopy[0] = 'test'
+console.log(arr); // ["a", "b", "c"]
+console.log(arrCopy); // ["test", "b", "c"]
+```
+##### 3、concat
+```
+var arr = ['a', 'b', 'c'];
+var arrCopy = arr.concat();
+arrCopy[0] = 'test'
+console.log(arr); // ["a", "b", "c"]
+console.log(arrCopy); // ["test", "b", "c"]
+```
 
