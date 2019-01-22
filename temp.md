@@ -199,8 +199,8 @@ setTimeout(obj.cool，100);//not awesome
 #### 一、浅复制:
 ##### 1、Object.assign
 #### 二、深复制:
-##### 1、JSON.stringify()、JSON.parse()
-##### 2、slice
+##### 1、JSON.stringify()、JSON.parse()，序列化反序列化法
+##### 2、slice,只深复制了第一层，后面几层全部引用共同地址
 ```
 var arr = ['a', 'b', 'c'];
 var arrCopy = arr.slice(0);
