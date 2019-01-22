@@ -198,7 +198,7 @@ setTimeout(obj.cool，100);//not awesome
 ## 六、对象
 #### 一、浅复制:
 ##### 1、Object.assign
-#### 二、深赋值:
+#### 二、深复制:
 ##### 1、JSON.stringify()、JSON.parse()
 ##### 2、slice
 ```
