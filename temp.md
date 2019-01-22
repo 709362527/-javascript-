@@ -120,7 +120,7 @@ var obj={
   a:2,
   foo:foo
 }
-obj.foo();
+obj.foo();//2
 ```
 ##### 隐式丢失，即多层obj调用function，this会指向离他最近的object；
 #### 3、显式绑定，call 、apply、bind
@@ -155,7 +155,10 @@ obj1.obj2.foo() //42
 上例中函数this返回的是obj2，最贴近引用他的那一层；<br>
 
 * 显示绑定的优先级要高于隐式绑定<br>
-* 箭头函数=>绑定的this不能修改
+* new 绑定优先级高于隐式绑定<br>
+* 箭头函数=>绑定的this不能修改<br>
+* 箭头函数体内的this对象，就是定义时所在的对象，而不是使用时所在的对象;<br>
+* 箭头函数无法作为构造函数<br>
 * ES6之前实现箭头函数的方法（被绑定的this再次修改仍然是只想obj）：
 ```
 function foo(){
