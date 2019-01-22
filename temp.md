@@ -259,11 +259,11 @@ function deepClone(obj) {
 test.loopObj = test
 ```
 解决方法：如果有环对象，就会从栈里检测到，从而直接返回结果<br>
-(2) 键值不是字符串而是 Symbol，因为 Symbol 是一种特殊的数据类型，它最大的特点便是独一无二，所以它的深拷贝就是浅拷贝
-解决方法：1、使用reflect；2、Object.getOwnPropertySymbols(obj)，然后遍历
-(3) 拷贝原型上的属性
- 解决方法：只有for...in可以实现，而其它三种方法(Object.keys、Reflect.ownKeys 和 JSON 方法)都不会追踪原型链上的属性；
-(4) 需要拷贝不可枚举的属性
+(2) 键值不是字符串而是 Symbol，因为 Symbol 是一种特殊的数据类型，它最大的特点便是独一无二，所以它的深拷贝就是浅拷贝<br>
+解决方法：1、使用reflect；2、Object.getOwnPropertySymbols(obj)，然后遍历<br>
+(3) 拷贝原型上的属性<br>
+ 解决方法：只有for...in可以实现，而其它三种方法(Object.keys、Reflect.ownKeys 和 JSON 方法)都不会追踪原型链上的属性；<br>
+(4) 需要拷贝不可枚举的属性<br>
 ```
 function cloneDeep(obj) {
     let family = {}
