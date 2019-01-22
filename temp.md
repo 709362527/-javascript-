@@ -298,3 +298,8 @@ function cloneDeep(obj) {
     return completeAssign(deepClone(obj), family)
 }
 ```
+#### 三、属性标识符，Object.defineProperty
+##### 1、configurable修改成false是单项操作，不可撤销
+##### 2、禁止扩展，Object.preventExtensions(myObject),在非严格模式下，创建新的属性会静默失败，在严格模式下会报错；
+##### 3、密封，Object.seal()，会调用preventExtensions 并把所有属性configurable设为false
+##### 4、冻结，Object.freeze()，会调用seal 并把所有属性writable设为false
