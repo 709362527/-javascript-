@@ -308,8 +308,10 @@ function cloneDeep(obj) {
 #### 1、delete删除数组单元后，数组length并不会发生变化
 #### 2、判断NaN，ES6 Math.isNaN（）或者利用NaN不等于自身的特点
 ```
-function isNaN(n){
-  return n!==n;
+if(!Number.isNaN){
+  Number.isNan = function(n){
+    return n !== n;
+  }
 }
 ```
 #### 3、Object.is()的polyfill
